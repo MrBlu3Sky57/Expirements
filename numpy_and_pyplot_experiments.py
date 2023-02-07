@@ -5,9 +5,13 @@ import math
 def log(num):
     return math.log(num)
 
+def exponential2(num):
+    return math.pow(2, num)
+
 logX = np.vectorize(log)
-xValues = np.arange(0.01,41,0.01)
-yValues = logX(xValues)
+exponentiate = np.vectorize(exponential2)
+xValues = np.arange(-40,41,0.01)
+yValues = exponentiate(xValues)
 colours = ['m', 'g', 'r', 'b']
 
 xMin, xMax, yMin, yMax = -50, 50, -50, 50
