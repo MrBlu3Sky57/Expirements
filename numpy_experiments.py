@@ -1,7 +1,10 @@
 from matplotlib import pyplot as pp
+import numpy as np
+import math
 
-x_values = [1, 2, 3, 4]
-y_values = [5, 6, 7, 8]
 
-pp.plot(x_values, y_values)
+
+values = np.array([[i * i] for i in range(-100, 101)])
+
+pp.plot(values)
 pp.show()
