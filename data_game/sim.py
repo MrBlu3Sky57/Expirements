@@ -46,8 +46,8 @@ def play(std_win=2, num_rounds=3):
     
     return winnings
 
-
-def get_expected(num_trials=10**6, buy_in=6):
+# Get the expected value across a certain number of trials, with a set buy-in, standard is 6
+def get_expected(num_trials, buy_in=6):
     if num_trials == 0:
         return 0
     expected = 0
@@ -59,10 +59,13 @@ def get_expected(num_trials=10**6, buy_in=6):
 
     return expected 
 
-data = [(5.93 - get_expected(x)) ** 2 for x in range(0, 10**3)] # Error of expected value
-data = data[100:]
+# Get the error in the expected of a range of trial numbers
+def get_error(range_end, range_start= 0, theoretical_expected=5.93):
+    return [(theoretical_expected - get_expected(x)) ** 2 for x in range(range_start, range_end)]
+
+# Plot data
 plt.axhline(y=0, color="r", linestyle="-")
-plt.plot(data)
+plt.plot(get_error(40))
 plt.xlabel("Number of Games played")
 plt.ylabel("Error of E(x)")
 
